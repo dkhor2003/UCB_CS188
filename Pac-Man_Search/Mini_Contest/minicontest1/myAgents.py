@@ -13,7 +13,7 @@
 
 
 from game import Agent, Directions
-from searchProblems import PositionSearchProblem, mazeDistance, manhattanHeuristic
+from searchProblems import PositionSearchProblem, manhattanHeuristic
 
 import util
 from util import manhattanDistance
