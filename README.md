@@ -3,6 +3,7 @@
 This project is a course taught at University of California, Berkeley, which is also available to the public through this link: <a href="https://inst.eecs.berkeley.edu/~cs188/fa18/">PACMAN-AI<a>. 
     
 Here are the project lists:
+<body style="margin: 0; padding: 0;">
 <table style="width:100%">
     <tr>
         <th> <strong>Project</strong> </th>
@@ -41,3 +42,4 @@ Here are the project lists:
         <td> ... </td>
     </tr>
 </table>
+</body>
