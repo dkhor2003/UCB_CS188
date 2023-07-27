@@ -34,7 +34,7 @@ Here are the project lists:
                 <li>Heuristics</li>
             </ul>
             <center>
-                <video src="./img_vid/mc1.mp4" autoplay loop>animation</video>
+                <video src="./img_vid/mc1.mov" autoplay loop>animation</video>
             </center>
         </td>
         <td> <img src="./img_vid/mc1_score.png" alt="Final Score: 980.6766342807825"> </td>
