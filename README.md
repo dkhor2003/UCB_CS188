@@ -1,4 +1,4 @@
-# <font color=blue>CS188: Introduction to Artificial Intelligence
+# CS188: Introduction to Artificial Intelligence
 
 This project is a course taught at University of California, Berkeley, which is also available to the public through this link: <a href="https://inst.eecs.berkeley.edu/~cs188/fa18/">PACMAN-AI<a>. 
 
@@ -86,3 +86,8 @@ Here are the project lists:
     </tr>
 </table>
 </body>
+    
+# License Information
+Licensing Information: You are free to use or extend these projects for educational purposes provided that (1) you do not distribute or publish solutions, (2) you retain this notice, and (3) you provide clear attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
+
+Attribution Information: The Pacman AI projects were developed at UC Berkeley. The core projects and autograders were primarily created by John DeNero (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu). Student side autograding was added by Brad Miller, Nick Hay, and Pieter Abbeel (pabbeel@cs.berkeley.edu).
