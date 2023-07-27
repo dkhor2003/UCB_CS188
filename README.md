@@ -1,10 +1,6 @@
 # CS188: Introduction to Artificial Intelligence
-<span style="color: red">Hello</span>
-This project is a course taught at University of California, Berkeley, which is also available to the public through this link: <a href="https://inst.eecs.berkeley.edu/~cs188/fa18/">PACMAN-AI<a>. 
 
-<center>
-    <video src="./Pac-Man_Search/pacman.webm" autoplay loop>animation</video>
-</center>
+This project is a course taught at University of California, Berkeley, which is also available to the public through this link: <a href="https://inst.eecs.berkeley.edu/~cs188/fa18/">PACMAN-AI<a>. 
     
 Here are the project lists:
 <body style="margin: 0; padding: 0;">
@@ -90,9 +86,9 @@ Here are the project lists:
 <br>
     
 # License Information
-- <span style="color: red">*Licensing Information*</span>: You are free to use or extend these projects for educational purposes provided that 
+- *Licensing Information*: You are free to use or extend these projects for educational purposes provided that 
     > (1) you do not distribute or publish solutions, <br>
     > (2) you retain this notice, and <br>
     > (3) you provide clear attribution to UC Berkeley, including a link to http://ai.berkeley.edu. <br>
 
-- <span style="color: red">*Attribution Information*</span>: The Pacman AI projects were developed at UC Berkeley. The core projects and autograders were primarily created by John DeNero (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu). Student side autograding was added by Brad Miller, Nick Hay, and Pieter Abbeel (pabbeel@cs.berkeley.edu).
+- *Attribution Information*: The Pacman AI projects were developed at UC Berkeley. The core projects and autograders were primarily created by John DeNero (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu). Student side autograding was added by Brad Miller, Nick Hay, and Pieter Abbeel (pabbeel@cs.berkeley.edu).
