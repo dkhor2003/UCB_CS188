@@ -6,12 +6,18 @@ Here are the project lists:
 <body style="margin: 0; padding: 0;">
 <table style="width:100%">
     <tr>
-        <th> <strong>Project</strong> </th>
-        <th> <strong>Description</strong> </th>
+        <th> Project </th>
+        <th> Concepts </th>
+        <th> Score </th>
+        <th> Link </th>
     </tr>
     <tr>
         <td> P1: Search </td>
-        <td> ... </td>
+        <td> 
+        
+        </td>
+        <td></td>
+        <td><a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Pac-Man_Search/search">SEARCH</a></td>
     </tr>
     <tr>
         <td> Mini-Contest 1: Multi-Agent Pacman </td>
