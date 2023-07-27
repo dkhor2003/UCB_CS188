@@ -70,16 +70,49 @@ class ReflexAgent(Agent):
         successorGameState = currentGameState.generatePacmanSuccessor(action)
         newPos = successorGameState.getPacmanPosition()
         newFood = successorGameState.getFood()
+        oldFood = currentGameState.getFood().asList()
+        
         newGhostStates = successorGameState.getGhostStates()
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
 
         "*** YOUR CODE HERE ***"
         print successorGameState 
-        print newPos 
-        print newFood
-        print newGhostStates 
-        print newScaredTimes 
-        return successorGameState.getScore()
+        print "Current Position: " + str(currentGameState.getPacmanPosition())
+        print "Action taken: " + str(action)
+        print "New Position: " + str(newPos)
+        print "Scared Times: " + str(newScaredTimes)
+        
+        calc_dist = lambda x: manhattanDistance(x, newPos)
+        capsules = successorGameState.getCapsules()
+        food_list = newFood.asList() + capsules
+        
+        ghost_positions = successorGameState.getGhostPositions()  
+                
+        for ghost_pos in ghost_positions:
+            if newScaredTimes[ghost_positions.index(ghost_pos)] > 0:
+                food_list.append(ghost_pos)
+                ghost_positions.remove(ghost_pos)
+        
+        if newPos in oldFood and newPos not in food_list:
+            nearest_food_dist = 0
+        else:
+            food_list = sorted(food_list, key=calc_dist)
+            nearest_food_dist = calc_dist(food_list[0])
+        
+        if ghost_positions:
+            ghost_positions = sorted(ghost_positions, key=calc_dist)
+            nearest_ghost_dist = calc_dist(ghost_positions[0])
+        else:
+            nearest_ghost_dist = 999
+            
+        print "Nearest Ghost Distance: " + str(nearest_ghost_dist)
+        print "Nearest Food Distance: " + str(nearest_food_dist)
+        
+        if nearest_ghost_dist >= 3:
+            print "Evaluation Score: " + str((100/ (nearest_food_dist + 1)))
+            return (100/ (nearest_food_dist + 1))
+        print "Evaluation Score: " + str((10/ (nearest_food_dist + 1)) - (20 / (nearest_ghost_dist + 1)))
+        return (10/ (nearest_food_dist + 1)) - (20 / (nearest_ghost_dist + 1))
 
 def scoreEvaluationFunction(currentGameState):
     """
