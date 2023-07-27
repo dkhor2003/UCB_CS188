@@ -33,16 +33,14 @@ Here are the project lists:
                 <li>A* Search</li>
                 <li>Heuristics</li>
             </ul>
-            <center>
-                <video src="./img_vid/mc1.mov" autoplay loop>animation</video>
-            </center>
+            <video src="./img_vid/mc1.mov" autoplay loop>animation</video>
         </td>
         <td> <img src="./img_vid/mc1_score.png" alt="Final Score: 980.6766342807825"> </td>
         <td><a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Pac-Man_Search/Mini_Contest/minicontest1">MINI-CONTEST-1</a></td>
     </tr>
     <tr>
         <td> P2: Multi-Agent Search </td>
-        <td> <video src="./img_vid/mc1.mp4" autoplay loop>animation</video> </td>
+        <td> <video src="./img_vid/mc1.mov" autoplay loop>animation</video> </td>
         <td>...</td>
         <td>...</td>
     </tr>
