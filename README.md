@@ -15,7 +15,7 @@ Here are the project lists:
         <td> P1: Search </td>
         <td> 
             <ul>
-                <li>DFS</li> BFS, UCS, A* search, heuristics
+                <li>DFS</li>
                 <li>BFS</li>
                 <li>UCS</li>
                 <li>A* Search</li>
@@ -42,7 +42,7 @@ Here are the project lists:
     </tr>
     <tr>
         <td> P2: Multi-Agent Search </td>
-        <td> ... </td>
+        <td> <video src="./img_vid/mc1.webm" autoplay loop>animation</video> </td>
         <td>...</td>
         <td>...</td>
     </tr>
