@@ -6,7 +6,7 @@ Here are the project lists:
 <body style="margin: 0; padding: 0;">
 <table style="width:100%">
     <tr>
-        <th> <span style="color:red">Project</span> </th>
+        <th> Project </th>
         <th> Concepts </th>
         <th> Score </th>
         <th> Link </th>
