@@ -48,7 +48,7 @@ Here are the project lists:
             </ul>
         </td>
         <td> ~ </td>
-        <td> ~ </td>
+        <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Multi-Agent_Search/multiagent">MINI-CONTEST-1</a></td> 
     </tr>
     <tr>
         <td> Mini-Contest 2: Multi-Agent Adversarial Pacman </td>
@@ -58,9 +58,9 @@ Here are the project lists:
     </tr>
     <tr>
         <td> P3: Reinforcement Learning </td>
-        <td> ... </td>
-        <td>...</td>
-        <td>...</td>
+        <td> ~ </td>
+        <td> ~ </td>
+        <td> ~ </td>
     </tr>
     <tr>
         <td> P4: Ghostbusters </td>
