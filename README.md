@@ -5,8 +5,8 @@ This project is a course taught at University of California, Berkeley, which is 
 Here are the project lists:
 <table style="width:100%">
     <tr>
-        <th> Project </th>
-        <th> Description </th>
+        <th> <strong>Project</strong> </th>
+        <th> <strong>Description</strong> </th>
     </tr>
     <tr>
         <td> P1: Search </td>
@@ -41,17 +41,3 @@ Here are the project lists:
         <td> ... </td>
     </tr>
 </table>
-    
-    
-    
-<style>
-th, td {
-    text-align: left;
-    padding: 8px;
-}
-    
-tr:nth-child(even) {
-    background-color: #000000;
-    text-color: #FFFFFF;
-}
-</style>
