@@ -13,39 +13,51 @@ Here are the project lists:
     </tr>
     <tr>
         <td> P1: Search </td>
-        <td> 
-        
-        </td>
-        <td></td>
+        <td>...</td>
+        <td>...</td>
         <td><a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Pac-Man_Search/search">SEARCH</a></td>
     </tr>
     <tr>
         <td> Mini-Contest 1: Multi-Agent Pacman </td>
         <td> ... </td>
+        <td>...</td>
+        <td><a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Pac-Man_Search/search">SEARCH</a></td>
     </tr>
     <tr>
         <td> P2: Multi-Agent Search </td>
         <td> ... </td>
+        <td>...</td>
+        <td><a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Pac-Man_Search/search">SEARCH</a></td>
     </tr>
     <tr>
         <td> Mini-Contest 2: Multi-Agent Adversarial Pacman </td>
         <td> ... </td>
+        <td>...</td>
+        <td><a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Pac-Man_Search/search">SEARCH</a></td>
     </tr>
     <tr>
         <td> P3: Reinforcement Learning </td>
         <td> ... </td>
+        <td>...</td>
+        <td><a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Pac-Man_Search/search">SEARCH</a></td>
     </tr>
     <tr>
         <td> P4: Ghostbusters </td>
         <td> ... </td>
+        <td>...</td>
+        <td><a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Pac-Man_Search/search">SEARCH</a></td>
     </tr>
     <tr>
         <td> P5: Machine Learning </td>
         <td> ... </td>
+        <td>...</td>
+        <td><a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Pac-Man_Search/search">SEARCH</a></td>
     </tr>
     <tr>
         <td> Contest: Pacman Capture the Flag </td>
         <td> ... </td>
+        <td>...</td>
+        <td><a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Pac-Man_Search/search">SEARCH</a></td>
     </tr>
 </table>
 </body>
