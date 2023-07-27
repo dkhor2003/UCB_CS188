@@ -34,7 +34,7 @@ Here are the project lists:
                 <li>Heuristics</li>
             </ul>
             <center>
-                <video src="./img_vid/mc1.webm" autoplay loop>animation</video>
+                <video src="./img_vid/mc1.mp4" autoplay loop>animation</video>
             </center>
         </td>
         <td> <img src="./img_vid/mc1_score.png" alt="Final Score: 980.6766342807825"> </td>
@@ -42,7 +42,7 @@ Here are the project lists:
     </tr>
     <tr>
         <td> P2: Multi-Agent Search </td>
-        <td> <video src="./img_vid/mc1.webm" autoplay loop>animation</video> </td>
+        <td> <video src="./img_vid/mc1.mp4" autoplay loop>animation</video> </td>
         <td>...</td>
         <td>...</td>
     </tr>
