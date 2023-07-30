@@ -11,7 +11,7 @@
 # Student side autograding was added by Brad Miller, Nick Hay, and
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
-
+from __future__ import division
 from util import manhattanDistance
 from game import Directions
 import random, util
@@ -70,49 +70,39 @@ class ReflexAgent(Agent):
         successorGameState = currentGameState.generatePacmanSuccessor(action)
         newPos = successorGameState.getPacmanPosition()
         newFood = successorGameState.getFood()
-        oldFood = currentGameState.getFood().asList()
-        
         newGhostStates = successorGameState.getGhostStates()
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
 
         "*** YOUR CODE HERE ***"
-        print successorGameState 
-        print "Current Position: " + str(currentGameState.getPacmanPosition())
-        print "Action taken: " + str(action)
-        print "New Position: " + str(newPos)
-        print "Scared Times: " + str(newScaredTimes)
-        
-        calc_dist = lambda x: manhattanDistance(x, newPos)
-        capsules = successorGameState.getCapsules()
-        food_list = newFood.asList() + capsules
-        
+        if successorGameState.isWin():
+            return successorGameState.getScore() + 999
+    
+        if successorGameState.isLose():
+            return successorGameState.getScore() - 999
+    
+        food_list = newFood.asList()
         ghost_positions = successorGameState.getGhostPositions()  
-                
-        for ghost_pos in ghost_positions:
-            if newScaredTimes[ghost_positions.index(ghost_pos)] > 0:
-                food_list.append(ghost_pos)
-                ghost_positions.remove(ghost_pos)
-        
-        if newPos in oldFood and newPos not in food_list:
-            nearest_food_dist = 0
-        else:
-            food_list = sorted(food_list, key=calc_dist)
-            nearest_food_dist = calc_dist(food_list[0])
-        
-        if ghost_positions:
-            ghost_positions = sorted(ghost_positions, key=calc_dist)
-            nearest_ghost_dist = calc_dist(ghost_positions[0])
-        else:
-            nearest_ghost_dist = 999
-            
-        print "Nearest Ghost Distance: " + str(nearest_ghost_dist)
-        print "Nearest Food Distance: " + str(nearest_food_dist)
-        
-        if nearest_ghost_dist >= 3:
-            print "Evaluation Score: " + str((100/ (nearest_food_dist + 1)))
-            return (100/ (nearest_food_dist + 1))
-        print "Evaluation Score: " + str((10/ (nearest_food_dist + 1)) - (20 / (nearest_ghost_dist + 1)))
-        return (10/ (nearest_food_dist + 1)) - (20 / (nearest_ghost_dist + 1))
+        calc_dist = lambda x: manhattanDistance(x, newPos)
+        nearest_scared_ghost = [float("inf"), 0]
+        nearest_ghost_dist = float("inf")
+    
+        for ghost_pos, scared_time in zip(ghost_positions, newScaredTimes):
+            dist_to_ghost = calc_dist(ghost_pos)
+            if scared_time > 0 and dist_to_ghost < nearest_scared_ghost[0]:
+                nearest_scared_ghost = [dist_to_ghost, scared_time]
+            elif dist_to_ghost < nearest_ghost_dist:
+                nearest_ghost_dist = dist_to_ghost
+  
+        food_list = sorted(food_list, key=calc_dist)
+        nearest_food_dist = calc_dist(food_list[0])
+    
+        food_score = 1 / nearest_food_dist
+        ghost_score = -1 / nearest_ghost_dist
+        scared_ghost_score = nearest_scared_ghost[1] / nearest_scared_ghost[0]
+    
+    
+        return successorGameState.getScore() + food_score + ghost_score + scared_ghost_score
+    
 
 def scoreEvaluationFunction(currentGameState):
     """
@@ -216,7 +206,58 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
           Returns the minimax action using self.depth and self.evaluationFunction
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        alpha = float("-inf")
+        beta = float("inf")
+        minimaxAction = self.value(gameState, self.index, alpha, beta, 0)[1]
+        return minimaxAction
+        
+    def value(self, gameState, agentIndex, alpha, beta, moves_made):
+        if moves_made >= self.depth or gameState.isWin() or gameState.isLose():
+            return [self.evaluationFunction(gameState), Directions.STOP]
+        if agentIndex == 0:
+            return self.min_or_max(gameState, agentIndex, alpha, beta, moves_made, mode="MAX")
+        else:
+            return self.min_or_max(gameState, agentIndex, alpha, beta, moves_made, mode="MIN")
+    
+    def min_or_max(self, gameState, agentIndex, alpha, beta, moves_made, mode):
+        if mode == "MAX":
+            score = float("-inf")
+            compare = lambda new_score, prev_score: new_score > prev_score
+            best_option = beta
+            max_mode = True
+        elif mode == "MIN":
+            score = float("inf")
+            compare = lambda new_score, prev_score: new_score < prev_score
+            best_option = alpha
+            max_mode = False
+        else:
+            raise Exception("Choose between 'MAX' and 'MIN' only!")
+            
+        bestAction = Directions.STOP
+        legalActions = gameState.getLegalActions(agentIndex)
+        if agentIndex + 1 < gameState.getNumAgents():
+            nextAgentIndex = agentIndex + 1
+        else:
+            nextAgentIndex = 0
+            moves_made += 1
+                
+        for action in legalActions:
+            successorState = gameState.generateSuccessor(agentIndex, action)
+            next_state_utility = self.value(successorState, nextAgentIndex, alpha, beta, moves_made)
+            if compare(next_state_utility[0], score):
+                score = next_state_utility[0]
+                bestAction = action
+                
+            if compare(score, best_option):
+                return [score, bestAction]
+            
+            if max_mode:
+                alpha = max(alpha, score)
+            else:
+                beta = min(beta, score)
+                
+            
+        return [score, bestAction]
 
 class ExpectimaxAgent(MultiAgentSearchAgent):
     """
@@ -231,17 +272,101 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
           legal moves.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        expectimaxAction = self.value(gameState, self.index, 0)[1]
+        return expectimaxAction
+        
+    def value(self, gameState, agentIndex, moves_made):
+        if moves_made >= self.depth or gameState.isWin() or gameState.isLose():
+            return [self.evaluationFunction(gameState), Directions.STOP]
+        if agentIndex == 0:
+            return self.maxValue(gameState, agentIndex, moves_made)
+        else:
+            return self.expValue(gameState, agentIndex, moves_made)
+    
+    
+    def maxValue(self, gameState, agentIndex, moves_made):
+        score = float("-inf")
+        bestAction = Directions.STOP
+        legalActions = gameState.getLegalActions(agentIndex)
+        if agentIndex + 1 < gameState.getNumAgents():
+            nextAgentIndex = agentIndex + 1
+        else:
+            nextAgentIndex = 0
+            moves_made += 1
+            
+        for action in legalActions:
+            successorState = gameState.generateSuccessor(agentIndex, action)
+            next_state_utility = self.value(successorState, nextAgentIndex, moves_made)
+            if next_state_utility[0] > score:
+                score = next_state_utility[0]
+                bestAction = action
+            
+        return [score, bestAction]
+    
+    def expValue(self, gameState, agentIndex, moves_made):
+        score = 0
+        bestAction = Directions.STOP
+        legalActions = gameState.getLegalActions(agentIndex)
+        chance = (1 / len(legalActions))
+        if agentIndex + 1 < gameState.getNumAgents():
+            nextAgentIndex = agentIndex + 1
+        else:
+            nextAgentIndex = 0
+            moves_made += 1
+
+        for action in legalActions:
+            successorState = gameState.generateSuccessor(agentIndex, action)
+            next_state_utility = self.value(successorState, nextAgentIndex, moves_made)
+            score += (next_state_utility[0] * chance)
+            
+        return [score, bestAction]
+        
+        
 
 def betterEvaluationFunction(currentGameState):
     """
       Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
       evaluation function (question 5).
 
-      DESCRIPTION: <write something here so we know what you did>
+      DESCRIPTION: Evaluated states based on the distance to nearest unscared ghost, nearest scared ghost and its scared time,
+                   and the nearest food. The closer the unscared ghost is to pacman, the lower the score; the closer the scared
+                   ghost is to pacman and the longer the scared time, the higher the score; the closer the food is to pacman, 
+                   the higher the score.
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    if currentGameState.isWin():
+        return currentGameState.getScore() + 999
+    
+    if currentGameState.isLose():
+        return currentGameState.getScore() - 999
+    
+    food_list = currentGameState.getFood().asList()
+    pacman_pos = currentGameState.getPacmanPosition() 
+    ghost_states = currentGameState.getGhostStates()
+    scared_times = [ghostState.scaredTimer for ghostState in ghost_states]
+    ghost_positions = currentGameState.getGhostPositions()  
+    calc_dist = lambda x: manhattanDistance(x, pacman_pos)
+    nearest_scared_ghost = [float("inf"), 0]
+    nearest_ghost_dist = float("inf")
+    
+    for ghost_pos, scared_time in zip(ghost_positions, scared_times):
+        dist_to_ghost = calc_dist(ghost_pos)
+        if scared_time > 0 and dist_to_ghost < nearest_scared_ghost[0]:
+            nearest_scared_ghost = [dist_to_ghost, scared_time]
+        elif dist_to_ghost < nearest_ghost_dist:
+            nearest_ghost_dist = dist_to_ghost
+  
+    food_list = sorted(food_list, key=calc_dist)
+    nearest_food_dist = calc_dist(food_list[0])
+        
+    food_score = 1 / nearest_food_dist
+    ghost_score = -1 / nearest_ghost_dist
+    scared_ghost_score = nearest_scared_ghost[1] / nearest_scared_ghost[0]
+    
+    
+    return currentGameState.getScore() + food_score + ghost_score + scared_ghost_score
+
+    
 
 # Abbreviation
 better = betterEvaluationFunction
