@@ -47,7 +47,7 @@ Here are the project lists:
                 <li>Evaluation Function</li>
             </ul>
         </td>
-        <td> ~ </td>
+        <td> Total: 25/25 </td>
         <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Multi-Agent_Search/multiagent">MULTI-AGENT-SEARCH</a></td> 
     </tr>
     <tr>
