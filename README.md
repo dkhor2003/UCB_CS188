@@ -34,7 +34,7 @@ Here are the project lists:
                 <li>Heuristics</li>
             </ul>
         </td>
-        <td> Final Score: 980.7 </td>
+        <td> Varies </td>
         <td><a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Pac-Man_Search/Mini_Contest/minicontest1">MINI-CONTEST-1</a></td>
     </tr>
     <tr>
