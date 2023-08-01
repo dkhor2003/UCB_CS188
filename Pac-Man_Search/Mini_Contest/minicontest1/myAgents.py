@@ -95,22 +95,6 @@ class MyAgent(Agent):
                 
         elif pacmen_target[self.index] not in food_list:
             pacmen_status[self.index], pacmen_target[self.index] = bfs(problem)
-            
-#         elif pacmen_target.count(pacmen_target[self.index]) > 1 and pacmen_target[self.index]:
-#             same_targets = [i for i in range(len(pacmen_target)) if pacmen_target[i] == pacmen_target[self.index] and i != self.index]
-#             for pacman_index in same_targets:
-#                 if len(pacmen_status[self.index]) > len(pacmen_status[pacman_index]):
-#                     if len(food_list) > 1:
-#                         tempGameState = gameState.deepCopy()
-#                         x, y = pacmen_target[self.index]
-#                         tempGameState.data.food[x][y] = False
-#                         newProblem = AnyFoodSearchProblem(tempGameState, self.index)
-#                         pacmen_status[self.index], pacmen_target[self.index] = bfs(newProblem)
-#                     else:
-#                         pacmen_status[self.index] = [Directions.STOP for i in range(len(pacmen_status[pacman_index]))]
-#                         pacmen_target[self.index] = None
-                        
-#                     break
 
         return pacmen_status[self.index].pop(0)
 
