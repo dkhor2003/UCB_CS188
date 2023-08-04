@@ -52,8 +52,12 @@ Here are the project lists:
     </tr>
     <tr>
         <td> Mini-Contest 2: Multi-Agent Adversarial Pacman </td>
-        <td> ~ </td>
-        <td> ~ </td>
+        <td> 
+            <ul>
+                <li>Evaluation Function</li>
+            </ul>
+        </td>
+        <td> Varies </td>
         <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Multi-Agent_Search/minicontest2">MINI-CONTEST-2</a> </td>
     </tr>
     <tr>
