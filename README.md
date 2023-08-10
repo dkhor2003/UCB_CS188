@@ -62,9 +62,17 @@ Here are the project lists:
     </tr>
     <tr>
         <td> P3: Reinforcement Learning </td>
-        <td> ~ </td>
-        <td> ~ </td>
-        <td> ~ </td>
+        <td> 
+            <ul>
+                <li>MDPs</li>
+                <li>Policy Evaluation</li>
+                <li>Value Iteration</li>
+                <li>Q-Learning</li>
+                <li>Approximate Q-Learning</li>
+            </ul>
+        </td>
+        <td> Total: 25/25 </td>
+        <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Reinforcement_Learning/reinforcement">REINFORCEMENT-LEARNING</a> </td>
     </tr>
     <tr>
         <td> P4: Ghostbusters </td>
