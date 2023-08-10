@@ -71,7 +71,7 @@ Here are the project lists:
                 <li>Approximate Q-Learning</li>
             </ul>
         </td>
-        <td> Total: 25/25 </td>
+        <td>Total: 25/25</td>
         <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Reinforcement_Learning/reinforcement">REINFORCEMENT-LEARNING</a> </td>
     </tr>
     <tr>
