@@ -78,7 +78,7 @@ Here are the project lists:
         <td> P4: Ghostbusters </td>
         <td> ~ </td>
         <td> ~ </td>
-        <td> ~ </td>
+        <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Ghostbusters/ghostbusters">Ghostbusters</a> </td>
     </tr>
     <tr>
         <td> P5: Machine Learning </td>
