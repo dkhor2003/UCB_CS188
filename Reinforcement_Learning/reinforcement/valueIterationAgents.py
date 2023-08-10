@@ -57,32 +57,23 @@ class ValueIterationAgent(ValueEstimationAgent):
         self.discount = discount
         self.iterations = iterations
         self.new_values = util.Counter() # A Counter is a dict with default 0
-        self.prev_values = None
+        self.prev_values = util.Counter()
         self.runValueIteration()
 
     def runValueIteration(self):
         # Write value iteration code here
         "*** YOUR CODE HERE ***"
-        start_state = self.mdp.getStartState()
-        all_states = self.mdp.getStates()
-        for state in all_states:
-            self.new_values[state] = 0
-            
-        self.prev_values = self.new_values.copy()
         for depth in range(self.iterations):
+            all_states = self.mdp.getStates()
             for state in all_states: 
                 action_qVal = self.computeActionFromValues(state)
-
             self.prev_values = self.new_values.copy()
             
-
-
     def getValue(self, state):
         """
           Return the value of the state (computed in __init__).
         """
         return self.prev_values[state]
-
 
     def computeQValueFromValues(self, state, action):
         """
@@ -110,7 +101,6 @@ class ValueIterationAgent(ValueEstimationAgent):
         """
         "*** YOUR CODE HERE ***"
         if self.mdp.isTerminal(state):
-            self.new_values[state] = self.prev_values[state]
             return None
         actions = self.mdp.getPossibleActions(state)
         action_qVal = [(action, self.getQValue(state, action)) for action in actions]
@@ -157,6 +147,12 @@ class AsynchronousValueIterationAgent(ValueIterationAgent):
 
     def runValueIteration(self):
         "*** YOUR CODE HERE ***"
+        all_states = self.mdp.getStates() 
+        for depth in range(self.iterations):
+            state = all_states[depth % len(all_states)]
+            self.computeActionFromValues(state)
+            self.prev_values = self.new_values.copy()
+            
 
 class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
     """
@@ -177,4 +173,41 @@ class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
 
     def runValueIteration(self):
         "*** YOUR CODE HERE ***"
+        all_states = self.mdp.getStates()
+        state_pred = {state: set() for state in all_states}
+        for state in state_pred:
+            actions = self.mdp.getPossibleActions(state)
+            for action in actions:
+                transition_states = self.mdp.getTransitionStatesAndProbs(state, action)
+                for next_state in transition_states:
+                    if next_state[1] > 0: state_pred[next_state[0]].add(state)
+                
+        heap = util.PriorityQueue()
+        
+        for state in state_pred:
+            if self.mdp.isTerminal(state):
+                continue
+                
+            actions = self.mdp.getPossibleActions(state)
+            max_qVal = max([self.computeQValueFromValues(state, action) for action in actions])
+            diff = abs(max_qVal - self.getValue(state))
+            heap.update(state, -diff)
+            
+        for iteration in range(self.iterations):
+            if heap.isEmpty():
+                break
+            state = heap.pop()
+            self.computeActionFromValues(state)
+            self.prev_values = self.new_values.copy()
+            for pred in state_pred[state]:
+                actions = self.mdp.getPossibleActions(pred)
+                max_qVal = max([self.computeQValueFromValues(pred, action) for action in actions])
+                diff = abs(max_qVal - self.getValue(pred))
+                if diff > self.theta:
+                    heap.update(pred, -diff)
+                    
+            self.prev_values = self.new_values.copy()
+            
+                
+            
 
