@@ -90,7 +90,7 @@ Here are the project lists:
         <td> P5: Machine Learning </td>
         <td> ~ </td>
         <td> ~ </td>
-        <td> ~ </td>
+        <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Machine_Learning/machinelearning">Machine Learning</a> </td>
     </tr>
     <tr>
         <td> Contest: Pacman Capture the Flag </td>
