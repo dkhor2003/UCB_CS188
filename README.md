@@ -76,8 +76,14 @@ Here are the project lists:
     </tr>
     <tr>
         <td> P4: Ghostbusters </td>
-        <td> ~ </td>
-        <td> ~ </td>
+        <td> 
+            <ul>
+                <li>Hidden Markov Model</li>
+                <li>Bayes Net</li>
+                <li>Particle Filtering</li>
+            </ul>
+        </td>
+        <td> Total: 25/25 </td>
         <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Ghostbusters/ghostbusters">Ghostbusters</a> </td>
     </tr>
     <tr>
