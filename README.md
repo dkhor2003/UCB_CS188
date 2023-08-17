@@ -84,13 +84,13 @@ Here are the project lists:
             </ul>
         </td>
         <td> Total: 25/25 </td>
-        <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Ghostbusters/ghostbusters">Ghostbusters</a> </td>
+        <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Ghostbusters/ghostbusters">GHOSTBUSTERS</a> </td>
     </tr>
     <tr>
         <td> P5: Machine Learning </td>
         <td> ~ </td>
         <td> ~ </td>
-        <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Machine_Learning/machinelearning">Machine Learning</a> </td>
+        <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Machine_Learning/machinelearning">MACHINE LEARNING</a> </td>
     </tr>
     <tr>
         <td> Contest: Pacman Capture the Flag </td>
