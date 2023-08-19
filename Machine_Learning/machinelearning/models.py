@@ -27,6 +27,7 @@ class PerceptronModel(object):
         Returns: a node containing a single number (the score)
         """
         "*** YOUR CODE HERE ***"
+        return nn.DotProduct(x, self.w)
 
     def get_prediction(self, x):
         """
@@ -35,12 +36,23 @@ class PerceptronModel(object):
         Returns: 1 or -1
         """
         "*** YOUR CODE HERE ***"
+        return 1 if nn.as_scalar(self.run(x)) >= 0 else -1
 
     def train(self, dataset):
         """
         Train the perceptron until convergence.
         """
         "*** YOUR CODE HERE ***"
+        batch_size = 1
+        no_mistake = True
+        while no_mistake:
+            no_mistake = False
+            for x, y in dataset.iterate_once(batch_size):
+                if nn.as_scalar(y) != self.get_prediction(x):
+                    self.w.update(x, nn.as_scalar(y))
+                    no_mistake = True
+            
+                    
 
 class RegressionModel(object):
     """
@@ -51,6 +63,12 @@ class RegressionModel(object):
     def __init__(self):
         # Initialize your model parameters here
         "*** YOUR CODE HERE ***"
+        self.alpha = 0.02 # Learning rate
+        self.mat1 = nn.Parameter(1, 400)
+        self.vec1 = nn.Parameter(1, 400)
+        self.mat2 = nn.Parameter(400, 1)
+        self.vec2 = nn.Parameter(1, 1)
+        
 
     def run(self, x):
         """
@@ -62,6 +80,9 @@ class RegressionModel(object):
             A node with shape (batch_size x 1) containing predicted y-values
         """
         "*** YOUR CODE HERE ***"
+        first_evaluation = nn.ReLU(nn.AddBias(nn.Linear(x, self.mat1), self.vec1))
+        second_evaluation = nn.AddBias(nn.Linear(first_evaluation, self.mat2), self.vec2)
+        return second_evaluation
 
     def get_loss(self, x, y):
         """
@@ -74,12 +95,30 @@ class RegressionModel(object):
         Returns: a loss node
         """
         "*** YOUR CODE HERE ***"
+        predicted_y = self.run(x)
+        loss = nn.SquareLoss(predicted_y, y)
+        return loss
 
     def train(self, dataset):
         """
         Trains the model.
         """
         "*** YOUR CODE HERE ***"
+        batch_size = 2
+        param = [self.mat1, self.vec1, self.mat2, self.vec2]
+        avg_loss = 1
+        while avg_loss > 0.02:
+            avg_loss = 0
+            count = 0
+            for x, y in dataset.iterate_once(batch_size):
+                loss = self.get_loss(x, y)
+                count += 1
+                avg_loss += nn.as_scalar(loss)
+                gradient_list = nn.gradients(loss, param)
+                loss = nn.as_scalar(loss)
+                for index, grad in list(enumerate(param)):
+                    grad.update(gradient_list[index], -self.alpha)
+            avg_loss /= count
 
 class DigitClassificationModel(object):
     """
