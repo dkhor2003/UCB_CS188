@@ -97,12 +97,6 @@ Here are the project lists:
         <td> Total: 25/25 </td>
         <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Machine_Learning/machinelearning">MACHINE LEARNING</a> </td>
     </tr>
-    <tr>
-        <td> Contest: Pacman Capture the Flag </td>
-        <td> ~ </td>
-        <td> ~ </td>
-        <td> ~ </td>
-    </tr>
 </table>
 </body>
     
