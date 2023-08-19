@@ -88,8 +88,13 @@ Here are the project lists:
     </tr>
     <tr>
         <td> P5: Machine Learning </td>
-        <td> ~ </td>
-        <td> Total: TBD </td>
+        <td> 
+            <ul>
+                <li>Perceptron</li>
+                <li>Neural Network</li>
+            </ul>
+        </td>
+        <td> Total: 25/25 </td>
         <td> <a href="https://github.com/dkhor2003/UCB_CS188/tree/main/Machine_Learning/machinelearning">MACHINE LEARNING</a> </td>
     </tr>
     <tr>
